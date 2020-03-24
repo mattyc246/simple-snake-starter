@@ -1,6 +1,6 @@
 // Set the canvas border and background color
 const CANVAS_BORDER_COLOR = "black";
-const CANVAS_BACKGROUND_COLOR = "#F0F3BD";
+const CANVAS_BACKGROUND_COLOR = "#FFFFFF";
 const SNAKE_COLOR = "limegreen";
 const SNAKE_BORDER_COLOR = "darkgreen";
 
@@ -14,10 +14,8 @@ let snake = [
 ];
 
 let score = 0;
-let highScore = 0;
 let speed = 150;
 let points = 5;
-let counter = 0;
 
 let changingDirection = false;
 
@@ -33,10 +31,7 @@ let foodY = 0;
 
 // Select the canvas that we will be working with
 const gameCanvas = document.getElementById("gameCanvas");
-const newGameButton = document.querySelector(".newGame");
 const scoreBoard = document.getElementById("score");
-const highScoreBoard = document.getElementById("highScore");
-const playNew = document.querySelector(".playAgain");
 
 // Return a 2 dimensions drawing context
 const ctx = gameCanvas.getContext("2d");
@@ -57,13 +52,8 @@ function advanceSnake() {
   snake.unshift(head);
 
   const didEatFood = snake[0].x === foodX && snake[0].y === foodY;
+
   if (didEatFood) {
-    counter++;
-    if (counter == 10) {
-      counter = 0;
-      points += 5;
-      speed -= 10;
-    }
     score += points;
     scoreBoard.innerHTML = score;
     createFood();
@@ -159,63 +149,9 @@ function didGameEnd() {
   return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
 }
 
-function getHighScore() {
-  storedScore = localStorage.getItem("snake-hs");
-  if (storedScore) {
-    highScore = storedScore;
-    highScoreBoard.innerHTML = highScore;
-  }
-}
-
-function startNewGame() {
-  score = 0;
-  points = 5;
-  speed = 150;
-  countr = 0;
-  changingDirection = false;
-  dx = 15;
-  dy = 0;
-  snake = [
-    { x: 150, y: 150 },
-    { x: 140, y: 150 },
-    { x: 130, y: 150 },
-    { x: 120, y: 150 },
-    { x: 110, y: 150 }
-  ];
-  $("#gameOver").fadeOut(1000);
-  $("#newScoreContainer").fadeOut(1000);
-  $("#oldScoreContainer").fadeOut(1000);
-  $(".playAgain").fadeOut(1000, function() {
-    $("#scoreBoard").fadeIn(1000);
-    $("#gameCanvas").fadeIn(1000, function() {
-      createFood();
-      main();
-    });
-  });
-}
-
-function main() {
+function play() {
   if (didGameEnd()) {
-    if (!highScore || score > highScore) {
-      highScoreBoard.innerHTML = score;
-      highScore = score;
-      localStorage.setItem("snake-hs", score);
-      $("#scoreBoard").fadeOut(1000);
-      $("#gameCanvas").fadeOut(1000, function() {
-        $("#gameOver").fadeIn(1000);
-        $("#newHighscore").html(score);
-        $("#newScoreContainer").fadeIn(1000);
-        $(".playAgain").fadeIn(1000);
-      });
-    } else {
-      $("#scoreBoard").fadeOut(1000);
-      $("#gameCanvas").fadeOut(1000, function() {
-        $("#gameOver").fadeIn(1000);
-        $("#oldHighscore").html(score);
-        $("#oldScoreContainer").fadeIn(1000);
-        $(".playAgain").fadeIn(1000);
-      });
-    }
+    alert("Game Over");
     return;
   }
   setTimeout(function onTick() {
@@ -225,23 +161,13 @@ function main() {
     advanceSnake();
     drawSnake();
 
-    main();
+    play();
   }, speed);
 }
 
 document.addEventListener("keydown", changeDirection);
-newGameButton.addEventListener("click", function() {
-  $(".title").fadeOut(1000);
-  $(".newGame").fadeOut(1000, function() {
-    $("#scoreBoard").fadeIn(1000);
-    $("#gameCanvas").fadeIn(1000, function() {
-      createFood();
-      main();
-    });
-  });
-});
 
-playNew.addEventListener("click", startNewGame);
-
+alert("Click OK to start playing!");
+createFood();
+play();
 clearCanvas();
-getHighScore();

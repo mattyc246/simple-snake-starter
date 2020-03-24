@@ -5,41 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-
     <link rel="stylesheet" href="snake.css" />
-    <title>Snake Game</title>
+    <title>Simple Snake Game</title>
   </head>
   <body>
     <div id="gameContainer">
-      <h1 class="title">Simply Snake</h1>
-      <h2 id="scoreBoard" class="hiddenElement">
-        Highscore: <span id="highScore">0</span> | Score:
+      <h1 class="title">Simple Snake Game</h1>
+      <h2 id="scoreBoard">
+        Score:
         <span id="score">0</span>
       </h2>
-      <h1 id="gameOver" class="hiddenElement">GAME OVER!</h1>
-      <h1 id="oldScoreContainer" class="hiddenElement">
-        Your score was: <span id="oldHighscore">0</span>
-      </h1>
-      <h1 id="newScoreContainer" class="hiddenElement">
-        You got a new highscore: <span id="newHighscore">0</span>
-      </h1>
       <canvas
         id="gameCanvas"
         class="hiddenElement"
         width="500"
         height="500"
       ></canvas>
-      <button class="newGame">New Game</button>
-      <button class="playAgain hiddenElement">Play Again?</button>
     </div>
-    <script src="./snake.js"></script>
+    <script src="snake.js"></script>
   </body>
 </html>

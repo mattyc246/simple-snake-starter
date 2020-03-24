@@ -4,14 +4,13 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: #0e79b2;
-  font-family: "Baloo Bhai", cursive;
+  background-color: whitesmoke;
+  font-family: "Roboto", sans-serif;
 }
 
 .title {
   text-align: center;
-  color: #f39237;
-  font-size: 3rem;
+  font-weight: 700;
 }
 
 #gameContainer {
@@ -23,82 +22,7 @@ body {
   flex-flow: column wrap;
 }
 
-@keyframes throbbingText {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.hiddenElement {
-  display: none;
-}
-
-.newGame {
-  font-family: "Baloo Bhai", cursive;
-  font-size: 5rem;
-  background-color: transparent;
-  border: 0;
-  color: #02c39a;
-  outline: 0;
-}
-
-.newGame:hover {
-  animation: throbbingText 1s infinite;
-}
-
 #scoreBoard {
   text-align: center;
-}
-
-@keyframes jelly {
-  0%,
-  100% {
-    transform: scale(1, 1);
-  }
-  25% {
-    transform: scale(0.9, 1.1);
-  }
-  50% {
-    transform: scale(1.1, 0.9);
-  }
-  75% {
-    transform: scale(0.95, 1.05);
-  }
-}
-
-#gameOver {
-  font-size: 4rem;
-  color: #773344;
-  text-align: center;
-}
-
-#oldScoreContainer {
-  font-size: 2rem;
-  text-align: center;
-  color: #02c39a;
-}
-
-#newScoreContainer {
-  font-size: 2rem;
-  text-align: center;
-  color: #02c39a;
-}
-
-.playAgain {
-  font-family: "Baloo Bhai", cursive;
-  font-size: 5rem;
-  background-color: transparent;
-  border: 0;
-  color: #f39237;
-  outline: 0;
-}
-
-.playAgain:hover {
-  animation: jelly 0.5s;
+  font-weight: 300;
 }
